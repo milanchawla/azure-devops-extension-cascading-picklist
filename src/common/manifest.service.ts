@@ -25,9 +25,53 @@ class ManifestService {
   private configurationStorage: ConfigurationStorage;
 
   public static defaultManifest: IManifest = Object.freeze({
-    version: '1',
-    cascades: {},
-  });
+  "version": "1.0",
+  "cascades": {
+    "Custom.DefectType": {
+      "Functional": {
+        "Microsoft.VSTS.CMMI.RootCause": [
+          "Business Procedure",
+          "Code",
+          "Data",
+          "Deployment",
+          "Design/Mapping",
+          "Requirements"
+        ]
+      },
+      "Test Execution": {
+        "Microsoft.VSTS.CMMI.RootCause": [
+          "Test Automation",
+          "Data",
+          "Design/Mapping",
+          "Duplicate",
+          "Environment",
+          "Testing Error",
+          "CICD Pipeline"
+        ]
+      },
+      "Security": {
+        "Microsoft.VSTS.CMMI.RootCause": [
+          "Business Procedure",
+          "Code",
+          "Data",
+          "Design/Mapping",
+          "Environment",
+          "Requirements"
+        ]
+      },
+      "Performance": {
+        "Microsoft.VSTS.CMMI.RootCause": [
+          "Application code- Requires Optimization",
+          "Application Server",
+          "Database design",
+          "Database server",
+          "Infrastructure Network Issue",
+          "Memory Leak"
+        ]
+      }
+    }
+  }
+});
 
   public constructor(projectId: string) {
     this.configurationStorage = new ConfigurationStorage(ConfigurationType.Manifest, projectId);
